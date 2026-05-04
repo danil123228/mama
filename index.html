@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: firebrick;
+        }
+    </style>
+    <title>kazic</title>
+</head>
+<body>
+    <script>
+        var deneg = 100;
+        var pob = 0;
+        var cone = 0;
+        
+        function zan()
+        {
+            deneg = 100;
+            cone = 0;
+            document.getElementById("nal").innerHTML = "денег :"+deneg;
+        }
+
+        function dep()
+        {
+            if (deneg > 0)
+            {
+                deneg -= 10;
+                pob = Math.random();
+                console.log(pob);
+                cone++
+                
+                if (pob > 0.55)
+                {
+                
+                    deneg += 20;
+                    document.getElementById("reth").innerHTML = "результат: победа";
+
+                }else{
+                    document.getElementById("reth").innerHTML = "результат: порожение";
+                }
+                    document.getElementById("nal").innerHTML = "денег :"+deneg;
+                if (cone === 67)
+                {
+                    
+                }
+            }else{
+                document.getElementById("reth").innerHTML = "к сожиленею вы депнули всё";
+            }
+            
+            
+        }
+    </script>
+    <div>
+        <h1>казино</h1>
+        <h3 id = "nal">деньги : 100</h3>
+        <h3 id="reth">результат :</h3>
+        <button onclick="dep()">депнуть</button>
+        <button onclick="zan()">заново</button>
+    </div>
+</body>
+</html>
