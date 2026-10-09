@@ -1,64 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="dep,depp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Любимой маме ❤️</title>
     <style>
-        body{
-            background-color: firebrick;
+        /* Настройка внешнего вида */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Чтобы сердечки не создавали полосы прокрутки */
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            animation: appear 1s ease-out;
+        }
+
+        h1 {
+            color: #e91e63;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-style: italic;
+            color: #666;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        /* Кнопка, которая появляется в конце */
+        .surprise-btn {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(233, 30, 99, 0.3);
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.05);
+            background-color: #d81b60;
+        }
+
+        /* Анимация появления карточки */
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Стили для летающих сердечек */
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 24px;
+            animation: float 4s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
     </style>
-    <title>kazic</title>
 </head>
 <body>
-    <script>
-        var deneg = 100;
-        var pob = 0;
-        var cone = 0;
+
+    <!-- Это само поздравление -->
+    <div class="card">
+        <h1>Мамочка, с праздником! 🌸</h1>
         
-        function zan()
-        {
-            deneg = 100;
-            cone = 0;
-            document.getElementById("nal").innerHTML = "денег :"+deneg;
+        <p>
+            Дорогая мама! <br><br>
+            Спасибо тебе за твою заботу, тепло и вкусные завтраки. 
+            Ты — самый лучший человек на свете!
+        </p>
+        
+        <p>
+            Я тебя очень сильно люблю и желаю тебе счастья, здоровья и 
+            чтобы ты всегда улыбалась!
+        </p>
+
+        <div class="signature">
+            Твой сын <br>
+            ❤️Данил❤️
+        </div>
+
+        <button class="surprise-btn" onclick="showSurprise()">Нажми сюда! 🎁</button>
+    </div>
+
+    <script>
+        // Функция для создания сердечек
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
         }
 
-        function dep()
-        {
-            if (deneg > 0)
-            {
-                deneg -= 10;
-                pob = Math.random();
-                console.log(pob);
-                cone++
-                
-                if (pob > 0.55)
-                {
-                
-                    deneg += 20;
-                    document.getElementById("reth").innerHTML = "результат: победа";
+        // Запускаем сердечки каждые 300 миллисекунд
+        setInterval(createHeart, 300);
 
-                }else{
-                    document.getElementById("reth").innerHTML = "результат: порожение";
-                }
-                    document.getElementById("nal").innerHTML = "денег :"+deneg;
-                if (cone === 67)
-                {
-                    
-                }
-            }else{
-                document.getElementById("reth").innerHTML = "к сожиленею вы депнули всё";
-            }
-            
-            
+        // Сюрприз при нажатии кнопки
+        function showSurprise() {
+            alert("Я тебя люблю! 💖 Ты у меня самая лучшая!");
         }
     </script>
-    <div>
-        <h1>казино</h1>
-        <h3 id = "nal">деньги : 100</h3>
-        <h3 id="reth">результат :</h3>
-        <button onclick="dep()">депнуть</button>
-        <button onclick="zan()">заново</button>
-    </div>
+
 </body>
 </html>
